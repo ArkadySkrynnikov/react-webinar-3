@@ -5,11 +5,11 @@ import Store from './store.js';
 
 const store = new Store({
   list: [
-    {code: 1, amountOfSelected: 0, title: 'Название элемента'},
+    {code: 50, amountOfSelected: 0, title: 'Название элемента'},
     {code: 2, amountOfSelected: 0, title: 'Некий объект'},
     {code: 3, amountOfSelected: 0, title: 'Заголовок'},
     {code: 4, amountOfSelected: 0, title: 'Очень длинное название элемента из семи слов'},
-    {code: 5, amountOfSelected: 0, title: 'Запись'},
+    {code: 4033, amountOfSelected: 0, title: 'Запись'},
     {code: 6, amountOfSelected: 0, title: 'Шестая запись'},
     {code: 7, amountOfSelected: 0, title: 'Седьмая запись'},
   ]

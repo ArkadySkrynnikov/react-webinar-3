@@ -1,3 +1,5 @@
+import {findHighestCode} from "./utils";
+
 /**
  * Хранилище состояния приложения
  */
@@ -5,7 +7,7 @@ class Store {
   constructor(initState = {}) {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
-    this.currentCode = this.state.list.length;
+    this.currentCode = findHighestCode(this.state.list);
   }
 
   /**

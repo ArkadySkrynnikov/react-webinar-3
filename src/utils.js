@@ -26,3 +26,23 @@ export function createElement(name, props = {}, ...children) {
 
   return element;
 }
+
+export function findHighestCode(array){
+  if(array.length === 0) return 0;
+
+  return array.map(element => element.code).reduce((acc, element) => {
+    if (acc > element) {
+      return acc;
+    } else {
+      return element;
+    }
+  })
+}
+
+export function wordEnding(count,arrOfEndings) {
+  const n = count % 100;
+  if (n > 11 && n < 15) return arrOfEndings[0];
+  const num = n % 10;
+  if (num > 1 && num < 5) return arrOfEndings[1];
+  return arrOfEndings[0];
+}
