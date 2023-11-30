@@ -43,11 +43,18 @@ class Store {
   /**
    * Добавление новой записи
    */
-  addItem() {
+  addItem(item) {
     this.setState({
       ...this.state,
-      list: [...this.state.list, {code: generateCode(), title: 'Новая запись'}]
+      list: [...this.state.list, { code: generateCode(), title: item.title, price: item.price, count: 1 }]
     })
+  };
+
+  /**
+   * Поиск по заголовку
+   */
+  findItem(title) {
+    return this.state.list.findIndex(item => item.title === title)
   };
 
   /**
@@ -57,29 +64,25 @@ class Store {
   deleteItem(code) {
     this.setState({
       ...this.state,
-      // Новый список, в котором не будет удаляемой записи
       list: this.state.list.filter(item => item.code !== code)
     })
   };
 
   /**
-   * Выделение записи по коду
-   * @param code
+   * Изменение количества товара
+   * @param title
    */
-  selectItem(code) {
+  countItemsInCart(title) {
     this.setState({
       ...this.state,
       list: this.state.list.map(item => {
-        if (item.code === code) {
-          // Смена выделения и подсчёт
+        if (item.title === title) {
           return {
             ...item,
-            selected: !item.selected,
-            count: item.selected ? item.count : item.count + 1 || 1,
+            count: item.count + 1,
           };
         }
-        // Сброс выделения если выделена
-        return item.selected ? {...item, selected: false} : item;
+        return item;
       })
     })
   }

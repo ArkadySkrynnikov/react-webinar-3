@@ -1,39 +1,65 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import List from "./components/list";
 import Controls from "./components/controls";
 import Head from "./components/head";
 import PageLayout from "./components/page-layout";
+import Popup from "./components/modal";
 
 /**
  * Приложение
  * @param store {Store} Хранилище состояния приложения
+ * @param cart
  * @returns {React.ReactElement}
  */
-function App({store}) {
+function App({store, cart }) {
 
-  const list = store.getState().list;
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const itemsList = store.getState().list;
+  const cartList = cart.getState().list;
 
   const callbacks = {
-    onDeleteItem: useCallback((code) => {
-      store.deleteItem(code);
-    }, [store]),
+    onDeleteItem: useCallback((item) => {
+      cart.deleteItem(item.code);
+    }, [cart]),
 
-    onSelectItem: useCallback((code) => {
-      store.selectItem(code);
-    }, [store]),
-
-    onAddItem: useCallback(() => {
-      store.addItem();
-    }, [store])
+    onAddItem: useCallback((item) => {
+      if (cart.findItem(item.title) !== -1) {
+        cart.countItemsInCart(item.title)
+      } else {
+        cart.addItem(item);
+      }
+    }, [cart])
   }
+
+  function openModal() {
+    setModalOpen(true);
+  }
+
+  function closeModal() {
+    setModalOpen(false);
+  }
+
 
   return (
     <PageLayout>
-      <Head title='Приложение на чистом JS'/>
-      <Controls onAdd={callbacks.onAddItem}/>
-      <List list={list}
-            onDeleteItem={callbacks.onDeleteItem}
-            onSelectItem={callbacks.onSelectItem}/>
+      <Head title='Магазин' />
+      <Controls
+        list={cartList}
+        onButtonClick={openModal}
+        disabled={cartList.length === 0}
+      />
+      <List
+        list={itemsList}
+        callback={callbacks.onAddItem}
+        buttonName='Добавить'
+      />
+      <Popup
+        list={cartList}
+        isOpen={modalOpen}
+        onButtonClick={closeModal}
+        callback={callbacks.onDeleteItem}
+      />
     </PageLayout>
   );
 }

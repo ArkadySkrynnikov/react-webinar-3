@@ -1,5 +1,29 @@
 .Controls {
+  height: 63px;
+}
+
+.Controls_container{
   display: flex;
   justify-content: flex-end;
   padding: 20px;
+}
+
+.Controls-title {
+  margin-right: 15px;
+  color: #000;
+  font-family: Arial;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Controls-span {
+  margin-right: 20px;
+  color: #0C0C0C;
+  font-family: Arial;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

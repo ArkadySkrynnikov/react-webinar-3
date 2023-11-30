@@ -16,6 +16,29 @@
 .Item-title {
   width: 100%;
   padding: 20px 10px;
+  color: #000;
+  font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Item-price {
+  padding: 19px 14px 19px 0;
+  white-space: nowrap;
+  color: #404040;
+  text-align: right;
+  font-family: Arial;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Item-amount {
+  padding: 20px 10px 20px 62px;
+  white-space: nowrap;
 }
 
 .Item-actions {

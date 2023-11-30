@@ -16,11 +16,15 @@ const store = new Store({
   ]
 });
 
+const cartList = new Store({
+  list: []
+});
+
 const root = createRoot(document.getElementById('root'));
 
-store.subscribe(() => {
-  root.render(<App store={store}/>);
+cartList.subscribe(() => {
+  root.render(<App store={store} cart={cartList}/>);
 });
 
 // Первый рендер приложения
-root.render(<App store={store}/>);
+root.render(<App store={store} cart={cartList}/>);
