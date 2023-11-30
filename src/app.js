@@ -3,7 +3,7 @@ import List from "./components/list";
 import Controls from "./components/controls";
 import Head from "./components/head";
 import PageLayout from "./components/page-layout";
-import Popup from "./components/modal";
+import Modal from "./components/modal";
 
 /**
  * Приложение
@@ -46,7 +46,7 @@ function App({store, cart }) {
       <Head title='Магазин' />
       <Controls
         list={cartList}
-        onButtonClick={openModal}
+        onClick={openModal}
         disabled={cartList.length === 0}
       />
       <List
@@ -54,10 +54,10 @@ function App({store, cart }) {
         callback={callbacks.onAddItem}
         buttonName='Добавить'
       />
-      <Popup
+      <Modal
         list={cartList}
         isOpen={modalOpen}
-        onButtonClick={closeModal}
+        onClick={closeModal}
         callback={callbacks.onDeleteItem}
       />
     </PageLayout>

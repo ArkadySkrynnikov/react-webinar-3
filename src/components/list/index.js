@@ -27,7 +27,7 @@ List.propTypes = {
     count: PropTypes.number,
   })).isRequired,
   callback: PropTypes.func.isRequired,
-  buttonText: string
+  buttonName: string
 };
 
 List.defaultProps = {

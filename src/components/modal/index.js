@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import './style.css';
 import List from "../list";
 
-function Popup({ list, isOpen, onButtonClick, callback }) {
+function Modal({ list, isOpen, onClick, callback }) {
 
   return (
     <div className={`Modal ${isOpen ? ('Modal_open') : ''}`} >
       <div className='Modal-container'>
         <div className="Modal_header">
           <span className="Modal_title">Корзина</span>
-          <button onClick={onButtonClick}>
+          <button onClick={onClick}>
             Закрыть
           </button>
         </div>
@@ -32,7 +32,7 @@ function Popup({ list, isOpen, onButtonClick, callback }) {
   )
 }
 
-Popup.propTypes = {
+Modal.propTypes = {
   list: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.number,
     title: PropTypes.string,
@@ -42,9 +42,9 @@ Popup.propTypes = {
   callback: PropTypes.func.isRequired,
 };
 
-Popup.defaultProps = {
+Modal.defaultProps = {
   callback: () => {
   }
 }
 
-export default React.memo(Popup);
+export default React.memo(Modal);

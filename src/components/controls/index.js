@@ -3,7 +3,7 @@ import PropTypes, { bool } from 'prop-types';
 import './style.css';
 import {plural} from "../../utils";
 
-function Controls({ onButtonClick, list, disabled }) {
+function Controls({ onClick, list, disabled }) {
   return (
     <div className='Controls'>
       <div className='Controls_container'>
@@ -32,7 +32,7 @@ function Controls({ onButtonClick, list, disabled }) {
         <button
           className='Controls-button'
           disabled={disabled}
-          onClick={() => onButtonClick()}
+          onClick={() => onClick()}
         >
           Перейти
         </button>
@@ -47,7 +47,7 @@ Controls.propTypes = {
     title: PropTypes.string,
     price: PropTypes.number,
   })).isRequired,
-  onButtonClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   disabled: bool
 };
 
